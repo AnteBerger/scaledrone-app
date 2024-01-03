@@ -8,13 +8,13 @@ import { MessageList } from './MessageList';
 
 const ROOM_NAME = 'observable-room';
 let drone = null;
-const profileColor = generateHexColor();
 
 export const Room = () => {
     const [messages, setMessages] = useState([]);
     const [members, setMembers] = useState([]);
     const [myProfile, setMyProfile] = useState({
         username: generateUsername(),
+        color: generateHexColor(),
     });
     const messagesRef = useRef();
     messagesRef.current = messages;
@@ -50,6 +50,7 @@ export const Room = () => {
         });
         room.on('members', (members) => {
             setMembers(members);
+            console.log(members);
         });
         room.on('member_join', (member) => {
             setMembers([...membersRef.current, member]);
@@ -72,13 +73,14 @@ export const Room = () => {
             message,
         });
     }
+
     return (
         <section className="p-5 flex flex-col gap-5 w-[40rem]">
             <div className="flex justify-end">
-                <Profile username={myProfile.username} profileColor={profileColor} />
+                <Profile username={myProfile.username} profileColor={myProfile.color} />
             </div>
             <div className="flex flex-col gap-3">
-                <MessageList />
+                <MessageList messages={messages} currentUsername={myProfile.username} members={members} />
                 <MessageForm onSendMessage={onSendMessage} />
             </div>
         </section>
