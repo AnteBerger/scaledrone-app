@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Button } from './Button';
 import { Input } from './Input';
 
-export const MessagesForm = ({ onSendMessage }) => {
+export const MessageForm = ({ onSendMessage }) => {
     const [text, setText] = useState('');
 
     const onChange = (e) => {

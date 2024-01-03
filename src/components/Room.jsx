@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { generateUsername } from '../utils/generateUsername';
-import { MessagesForm } from './MessagesForm';
+import { MessageForm } from './MessageForm';
 
 const ROOM_NAME = 'observable-room';
 let drone = null;
@@ -69,5 +69,7 @@ export const Room = () => {
         });
     }
 
-    return <MessagesForm onSendMessage={onSendMessage} />;
+    console.log(messages);
+
+    return <MessageForm onSendMessage={onSendMessage} />;
 };
