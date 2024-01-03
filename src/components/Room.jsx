@@ -4,7 +4,7 @@ import { generateUsername } from '../utils/generateUsername';
 import { MessageForm } from './MessageForm';
 import { Profile } from './Profile';
 import { generateHexColor } from '../utils/generateHexColor';
-import { MessageList } from './Messages';
+import { MessageList } from './MessageList';
 
 const ROOM_NAME = 'observable-room';
 let drone = null;
