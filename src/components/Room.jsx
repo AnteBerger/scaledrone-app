@@ -5,6 +5,7 @@ import { MessageForm } from './MessageForm';
 import { Profile } from './Profile';
 import { generateHexColor } from '../utils/generateHexColor';
 import { MessageList } from './MessageList';
+import { toast } from 'react-toastify';
 
 const ROOM_NAME = 'observable-room';
 let drone = null;
@@ -50,16 +51,17 @@ export const Room = () => {
         });
         room.on('members', (members) => {
             setMembers(members);
-            console.log(members);
         });
         room.on('member_join', (member) => {
             setMembers([...membersRef.current, member]);
+            toast.success(`${member.clientData.username} joined the chat`);
         });
         room.on('member_leave', ({ id }) => {
             const index = membersRef.current.findIndex((m) => m.id === id);
             const newMembers = [...membersRef.current];
             newMembers.splice(index, 1);
             setMembers(newMembers);
+            toast.info(`${membersRef.current[index].clientData.username} left the chat`);
         });
     }
 
