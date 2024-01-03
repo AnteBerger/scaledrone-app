@@ -4,6 +4,7 @@ import { generateUsername } from '../utils/generateUsername';
 import { MessageForm } from './MessageForm';
 import { Profile } from './Profile';
 import { generateHexColor } from '../utils/generateHexColor';
+import { MessageList } from './Messages';
 
 const ROOM_NAME = 'observable-room';
 let drone = null;
@@ -72,11 +73,14 @@ export const Room = () => {
         });
     }
     return (
-        <section className="p-5 flex flex-col gap-5">
+        <section className="p-5 flex flex-col gap-5 w-[40rem]">
             <div className="flex justify-end">
                 <Profile username={myProfile.username} profileColor={profileColor} />
             </div>
-            <MessageForm onSendMessage={onSendMessage} />
+            <div className="flex flex-col gap-3">
+                <MessageList />
+                <MessageForm onSendMessage={onSendMessage} />
+            </div>
         </section>
     );
 };
