@@ -69,9 +69,5 @@ export const Room = () => {
         });
     }
 
-    return (
-        <div>
-            <MessagesForm onSendMessage={onSendMessage} />
-        </div>
-    );
+    return <MessagesForm onSendMessage={onSendMessage} />;
 };
