@@ -1,5 +1,11 @@
+import { Room } from './components/Room';
+
 function App() {
-    return <main>Content</main>;
+    return (
+        <main>
+            <Room />
+        </main>
+    );
 }
 
 export default App;
