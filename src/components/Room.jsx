@@ -2,9 +2,12 @@ import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 import { generateUsername } from '../utils/generateUsername';
 import { MessageForm } from './MessageForm';
+import { Profile } from './Profile';
+import { generateHexColor } from '../utils/generateHexColor';
 
 const ROOM_NAME = 'observable-room';
 let drone = null;
+const profileColor = generateHexColor();
 
 export const Room = () => {
     const [messages, setMessages] = useState([]);
@@ -68,8 +71,12 @@ export const Room = () => {
             message,
         });
     }
-
-    console.log(messages);
-
-    return <MessageForm onSendMessage={onSendMessage} />;
+    return (
+        <section className="p-5 flex flex-col gap-5">
+            <div className="flex justify-end">
+                <Profile username={myProfile.username} profileColor={profileColor} />
+            </div>
+            <MessageForm onSendMessage={onSendMessage} />
+        </section>
+    );
 };
